@@ -19,7 +19,8 @@
         <activity android:name=".LogInActivity" />
         <activity
             android:name=".MainActivity"
-            android:label="@string/title_activity_main"></activity>
+            android:label="@string/title_activity_main" />
+        <activity android:name=".TaskData"></activity>
     </application>
 
 </manifest>

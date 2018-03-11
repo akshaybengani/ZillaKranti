@@ -23,15 +23,17 @@ public class MainActivity extends AppCompatActivity {
             android.support.v4.app.FragmentTransaction transaction = fragmentManager.beginTransaction();
 
             switch (item.getItemId()) {
+
+                case R.id.navigation_home1:
+                    transaction.replace(R.id.content, new HomeFragment()).commit();
+                    return true;
+
                 case R.id.navigation_create_task:
 
                     transaction.replace(R.id.content, new TaskAdd()).commit();
 
                     return true;
 
-                case R.id.navigation_home1:
-                    transaction.replace(R.id.content, new HomeFragment()).commit();
-                    return true;
                 case R.id.navigation_user:
                     transaction.replace(R.id.content, new UserFragment()).commit();
                     return true;
@@ -47,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
 
         android.support.v4.app.FragmentManager fragmentManager = getSupportFragmentManager();
         android.support.v4.app.FragmentTransaction transaction = fragmentManager.beginTransaction();
-        transaction.replace(R.id.content, new TaskAdd()).commit();
+        transaction.replace(R.id.content, new HomeFragment()).commit();
 
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);

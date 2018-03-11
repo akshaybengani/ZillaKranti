@@ -55,6 +55,12 @@ public class LogInActivity extends AppCompatActivity {
         {
             //Start Profile Activity
             Intent intent = new Intent(LogInActivity.this,MainActivity.class);
+            // The next two lines create a blank task and acts as when back button pressed the application closes
+            // Insteed of going back to the previous activity
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            // End of back button pressed material
+            // To start a new intent
             startActivity(intent);
         }
 
@@ -104,7 +110,14 @@ public class LogInActivity extends AppCompatActivity {
 
                             // updateUI Now Home Activity will start
                             Intent intent = new Intent(LogInActivity.this,MainActivity.class);
+                            // The next two lines create a blank task and acts as when back button pressed the application closes
+                            // Insteed of going back to the previous activity
+                            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                            // End of back button pressed material
+                            // To start a new intent
                             startActivity(intent);
+
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w(TAG, "signInWithCredential:failure", task.getException());

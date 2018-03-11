@@ -5,11 +5,30 @@
     tools:context="com.zillakranti.zillakranti.HomeFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Button 2"
+ <LinearLayout
+     android:layout_width="match_parent"
+     android:layout_height="match_parent"
+     android:orientation="vertical"
+     >
+     <TextView
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:textSize="30dp"
+         android:textColor="#111"
+         android:textStyle="bold"
+         android:text="Select Task"
+         android:layout_gravity="center"
+         android:gravity="center"
+         android:layout_margin="16dp"
+         />
+     <ListView
+         android:id="@+id/mylist"
+         android:layout_width="match_parent"
+         android:layout_height="match_parent"
+         />
 
-        />
+
+
+ </LinearLayout>
 
 </FrameLayout>
