@@ -12,6 +12,8 @@ If the upvotes for the particular problems increases to an N percente of populat
 Its a simple and multifunctional Android Application just download and install and everything is ready.
 
 ### Software Requirements
-1 Android Device with Min SDK version 19 or Kitkat 4.4 or above.
-2 Internet connectivity required for application data update
-3 Connectivity supports 2G/3G/4G/LTE/Wifi connectivity
+1 Android Device with Min SDK version 19 or Kitkat 4.4 or above.<br>
+2 Internet connectivity required for application data update.<br>
+3 Connectivity supports 2G/3G/4G/LTE/Wifi connectivity.<br>
+
+## Thank-You for your contributions
