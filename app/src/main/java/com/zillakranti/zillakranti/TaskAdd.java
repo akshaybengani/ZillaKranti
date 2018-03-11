@@ -1,6 +1,7 @@
 package com.zillakranti.zillakranti;
 
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -10,6 +11,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -36,6 +38,8 @@ public class TaskAdd extends Fragment {
 
     private FirebaseAuth firebaseAuth;
     // TODO End of Variable Declaration
+
+
 
 
     public TaskAdd() {
@@ -77,12 +81,17 @@ public class TaskAdd extends Fragment {
 
     public void saveInfo()
     {
-        String TaskName = editTextTaskName.getText().toString().trim();
-        String TaskDesc = editTextTaskDesc.getText().toString().trim();
+
+
+        String TaskName = "";
+        TaskName = editTextTaskName.getText().toString().trim();
+        String TaskDesc = "";
+        TaskDesc = editTextTaskDesc.getText().toString().trim();
         //FirebaseUser user = firebaseAuth.getCurrentUser();
 
         databaseReference.child(TaskName).setValue(TaskDesc);
 
+        Toast.makeText(getContext(),"Value Added",Toast.LENGTH_SHORT).show();
 
     }
 

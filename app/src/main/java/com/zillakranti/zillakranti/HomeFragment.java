@@ -1,6 +1,7 @@
 package com.zillakranti.zillakranti;
 
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -10,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.ChildEventListener;
@@ -33,6 +35,10 @@ public class HomeFragment extends Fragment {
     ArrayAdapter<String> adapter;
     private FirebaseAuth firebaseAuth;
 
+    // Here we declared a ProgressDialog variable
+    private ProgressDialog progressDialog;
+
+
     public HomeFragment() {
         // Required empty public constructor
     }
@@ -45,10 +51,16 @@ public class HomeFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
         // TODO This is the onCreate for this fragement
 
-//        String MealTime = Intent().getExtras().getString("Meal Time");
-//        setTitle(MealTime);
+        //Here we initialised the progress Dialog
+        progressDialog=new ProgressDialog(getContext());
+        // Here we set the logging message in the progress dialog
+        progressDialog.setMessage("Loading Data");
+        // Here we show the progress Dialog message
+        progressDialog.show();
 
 
+
+        // Here we Defined the ListView
         listView = (ListView) view.findViewById(R.id.mylist);
         firebaseAuth = FirebaseAuth.getInstance();
 
@@ -59,14 +71,29 @@ public class HomeFragment extends Fragment {
         databaseReference = FirebaseDatabase.getInstance().getReference("Tasks");
 
         listDataView();
-//        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//                Intent Q = new Intent(HomeFragment.this,TaskData.class);
-//                Q.putExtra("argg",position);
-//                startActivity(Q);
-//            }
-//        });
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                // TODO Value of the selected item
+                String selectedFromList = (String) listView.getItemAtPosition(position);
+
+                //Here we initialised the progress Dialog
+                progressDialog=new ProgressDialog(getContext());
+                // Here we set the logging message in the progress dialog
+                progressDialog.setMessage("Loading Data");
+                // Here we show the progress Dialog message
+                progressDialog.show();
+
+                Intent intent = new Intent(HomeFragment.this.getContext(),TaskData.class);
+                //Toast.makeText(getContext(),"Value is "+selectedFromList,Toast.LENGTH_SHORT).show();
+                intent.putExtra("argg",""+selectedFromList);
+
+
+
+                startActivity(intent);
+            }
+        });
 
 
         return view;
@@ -78,6 +105,8 @@ public class HomeFragment extends Fragment {
         // TODO listDataView Started
 
 
+
+
         databaseReference.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
@@ -86,13 +115,13 @@ public class HomeFragment extends Fragment {
                 list.add(value);
                 adapter.notifyDataSetChanged();
 
+                // Stopped the progress bar
+                progressDialog.dismiss();
+
             }
 
             @Override
             public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-
-
-
             }
 
             @Override
@@ -104,12 +133,10 @@ public class HomeFragment extends Fragment {
 
             @Override
             public void onChildMoved(DataSnapshot dataSnapshot, String s) {
-
             }
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-
             }
         });
 
