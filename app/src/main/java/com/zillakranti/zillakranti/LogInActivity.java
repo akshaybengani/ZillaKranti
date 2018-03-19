@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
@@ -21,6 +22,8 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
+
+import javax.security.auth.login.LoginException;
 
 public class LogInActivity extends AppCompatActivity {
 
@@ -38,7 +41,7 @@ public class LogInActivity extends AppCompatActivity {
     // Here this TAG is to show what happens in the log
     private static final String TAG ="Play";
 
-
+    Button SignUp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,18 +53,32 @@ public class LogInActivity extends AppCompatActivity {
         // Initialisation of the firebase auth object
         firebaseAuth = FirebaseAuth.getInstance();
 
+        // Value passed from the previous activity collects here
+        Intent intent = getIntent();
+        String userType = intent.getStringExtra("argg");
+        // The value passed from the listview item clicked from previous activity
+
+        SignUp = (Button)findViewById(R.id.userSignUp);
+        SignUp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LogInActivity.this,SignUpActivity.class);
+                startActivity(intent);
+            }
+        });
+
         // this is for if the user is already logged in you can bypass the Google sign IN procedure
         if(firebaseAuth.getCurrentUser()!=null)
         {
             //Start Profile Activity
-            Intent intent = new Intent(LogInActivity.this,MainActivity.class);
+            Intent intent1 = new Intent(LogInActivity.this,MainActivity.class);
             // The next two lines create a blank task and acts as when back button pressed the application closes
             // Insteed of going back to the previous activity
-            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+//            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
             // End of back button pressed material
             // To start a new intent
-            startActivity(intent);
+            startActivity(intent1);
         }
 
         //These are the Google Sign In options Window
@@ -77,7 +94,7 @@ public class LogInActivity extends AppCompatActivity {
         // Here when the user presses the button
         buttonSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View v){
                 signIn();
             }
         });

@@ -41,7 +41,7 @@
         <EditText
             android:singleLine="false"
             android:id="@+id/TaskDesc"
-            android:lines="5"
+            android:lines="3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
@@ -49,6 +49,25 @@
             android:gravity="top"
 
             />
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Progress"
+            android:textSize="30dp"
+            android:textColor="#111"
+            />
+
+        <SeekBar
+            android:id="@+id/progressinput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            />
+
+
+
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
