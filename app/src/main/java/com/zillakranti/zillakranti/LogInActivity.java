@@ -41,7 +41,6 @@ public class LogInActivity extends AppCompatActivity {
     // Here this TAG is to show what happens in the log
     private static final String TAG ="Play";
 
-    Button SignUp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,14 +57,6 @@ public class LogInActivity extends AppCompatActivity {
         String userType = intent.getStringExtra("argg");
         // The value passed from the listview item clicked from previous activity
 
-        SignUp = (Button)findViewById(R.id.userSignUp);
-        SignUp.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(LogInActivity.this,SignUpActivity.class);
-                startActivity(intent);
-            }
-        });
 
         // this is for if the user is already logged in you can bypass the Google sign IN procedure
         if(firebaseAuth.getCurrentUser()!=null)
@@ -168,8 +159,6 @@ public class LogInActivity extends AppCompatActivity {
             }
         }
     }
-
-
 
 
 }

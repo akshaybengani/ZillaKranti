@@ -2,17 +2,15 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
     android:orientation="vertical"
-    style="@style/backgrounds"
-   
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.zillakranti.zillakranti.LogInActivity">
+    tools:context="com.zillakranti.zillakranti.LogInAdminActivity">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Login/Signup"
+        android:text="Login"
         android:textSize="30dp"
         android:gravity="center"
         android:layout_margin="20dp"
@@ -72,23 +70,7 @@
             android:text="Login"
             android:layout_weight="1"
             />
-        <Button
-            android:id="@+id/userSignUp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="SignUp"
-            android:layout_weight="1"
-            />
-
 
     </LinearLayout>
-    <com.google.android.gms.common.SignInButton
-        android:id="@+id/sign_in_button"
-        android:layout_width="match_parent"
-        android:layout_marginBottom="150dp"
-        android:layout_height="40dp"
-        android:layout_margin="20dp"
-        />
-
 
 </LinearLayout>

@@ -23,7 +23,7 @@ public class ChooseUserType extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(ChooseUserType.this,LogInActivity.class);
                 //Toast.makeText(getContext(),"Value is "+selectedFromList,Toast.LENGTH_SHORT).show();
-                intent.putExtra("argg","user");
+               // intent.putExtra("argg","user");
 
                 startActivity(intent);
             }
@@ -31,10 +31,9 @@ public class ChooseUserType extends AppCompatActivity {
         adminclick.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ChooseUserType.this,LogInActivity.class);
+                Intent intent = new Intent(ChooseUserType.this,LogInAdminActivity.class);
                 //Toast.makeText(getContext(),"Value is "+selectedFromList,Toast.LENGTH_SHORT).show();
                 intent.putExtra("argg","admin");
-
                 startActivity(intent);
 
             }
