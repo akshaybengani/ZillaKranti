@@ -25,10 +25,9 @@
             android:name=".MainActivity"
             android:label="@string/title_activity_main" />
         <activity android:name=".TaskData" />
-        <activity android:name=".ChooseUserType" />
-        <activity android:name=".SignUpActivity"></activity>
+        <activity android:name=".SignUpActivity" />
         <activity android:name=".GoogleSignUp" />
-        <activity android:name=".LogInAdminActivity"></activity>
+        <activity android:name=".CommentsRatings"></activity>
     </application>
 
 </manifest>

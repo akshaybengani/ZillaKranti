@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:orientation="vertical"
     android:layout_height="match_parent"
-    tools:context="com.zillakranti.zillakranti.SplashScreen">
+    tools:context="com.zillakranti.zillakranti.SplashScreen"
+    android:background="">
 
     <ImageView
         android:gravity="center"

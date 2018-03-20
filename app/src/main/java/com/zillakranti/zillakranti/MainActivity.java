@@ -35,12 +35,6 @@ public class MainActivity extends AppCompatActivity {
                     transaction.replace(R.id.content, new HomeFragment()).commit();
                     return true;
 
-                case R.id.navigation_create_task:
-
-                    transaction.replace(R.id.content, new TaskAdd()).commit();
-
-                    return true;
-
                 case R.id.navigation_user:
                     transaction.replace(R.id.content, new UserFragment()).commit();
                     return true;

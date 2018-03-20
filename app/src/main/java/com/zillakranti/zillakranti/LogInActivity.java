@@ -49,13 +49,26 @@ public class LogInActivity extends AppCompatActivity {
 
         // Initialisation of the signIn Button
         buttonSignIn = (SignInButton) findViewById(R.id.sign_in_button);
+        // Initialisation of the signUp Button
+        Button buttonSignUp = (Button) findViewById(R.id.userSignUp);
+
+        // Here we process the signUp operation
+        buttonSignUp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent1 = new Intent(LogInActivity.this,SignUpActivity.class);
+                startActivity(intent1);
+            }
+        });
+
         // Initialisation of the firebase auth object
         firebaseAuth = FirebaseAuth.getInstance();
 
-        // Value passed from the previous activity collects here
-        Intent intent = getIntent();
-        String userType = intent.getStringExtra("argg");
-        // The value passed from the listview item clicked from previous activity
+//        // Value passed from the previous activity collects here
+//        Intent intent = getIntent();
+//        String userType = intent.getStringExtra("argg");
+//        // The value passed from the listview item clicked from previous activity
 
 
         // this is for if the user is already logged in you can bypass the Google sign IN procedure
