@@ -6,15 +6,18 @@
     android:orientation="vertical"
     android:layout_height="match_parent"
     tools:context="com.zillakranti.zillakranti.SplashScreen"
-    android:background="">
+    android:background="#CCC9C7"
+    >
 
     <ImageView
         android:gravity="center"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:src="@drawable/untitled"
+        android:src="@drawable/endl"
         android:scaleType="center"
-        android:textSize="50dp"
+        android:background="#CCC9C7"
+
+
          />
 
 </LinearLayout>

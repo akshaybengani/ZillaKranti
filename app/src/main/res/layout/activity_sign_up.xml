@@ -11,7 +11,7 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#C5E1A5">
+        android:background="@drawable/image1">
 
     <TextView
         android:layout_width="match_parent"
@@ -23,7 +23,7 @@
         android:textSize="30dp"
         />
     <EditText
-        android:id="@+id/editTextName"
+        android:id="@+id/editTextFullName"
         android:inputType="textPersonName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -58,22 +58,26 @@
 
             />
         <RadioGroup
+            android:id="@+id/radioGroupGender"
             android:layout_width="match_parent"
             android:orientation="horizontal"
             android:layout_marginHorizontal="20dp"
             android:layout_height="wrap_content">
 
             <RadioButton
+                android:id="@+id/radioButtonMale"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Male"
                 />
             <RadioButton
+                android:id="@+id/radioButtonFemale"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Female"
                 />
             <RadioButton
+                android:id="@+id/radioButtonOther"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Other"
@@ -113,7 +117,9 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="20dp"
         android:textAlignment="center"
-        android:textColor="#002aff"
+        android:textSize="20dp"
+        android:textColor="#fff"
+        android:textStyle="bold"
         android:layout_marginBottom="10dp"
         android:text="Already a user Login to continue.."
         />

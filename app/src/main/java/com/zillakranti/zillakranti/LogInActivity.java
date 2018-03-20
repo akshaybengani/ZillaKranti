@@ -1,12 +1,15 @@
 package com.zillakranti.zillakranti;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
@@ -26,6 +29,14 @@ import com.google.firebase.auth.GoogleAuthProvider;
 import javax.security.auth.login.LoginException;
 
 public class LogInActivity extends AppCompatActivity {
+
+    // Declarations
+    private EditText editTextuserName,editTextpassWord;
+    Button buttonLogIn;
+    // Here we declared a ProgressDialog variable
+    private ProgressDialog progressDialog;
+
+
 
     // This is the static value to check the sign in code is completed or not if the value not match there is an error
     private static final int RC_SIGN_IN = 2;
@@ -47,6 +58,27 @@ public class LogInActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_log_in);
 
+        // TODO starts here
+
+        buttonLogIn = (Button)findViewById(R.id.buttonUserLogin);
+        editTextuserName = (EditText)findViewById(R.id.userName);
+        editTextpassWord = (EditText)findViewById(R.id.userPassword);
+
+        // Initialisation of the firebase auth object
+        firebaseAuth = FirebaseAuth.getInstance();
+
+        //Here we initialised the progress Dialog
+        progressDialog=new ProgressDialog(this);
+
+        buttonLogIn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                loginwithtext();
+
+            }
+        });
+
+
         // Initialisation of the signIn Button
         buttonSignIn = (SignInButton) findViewById(R.id.sign_in_button);
         // Initialisation of the signUp Button
@@ -62,8 +94,6 @@ public class LogInActivity extends AppCompatActivity {
             }
         });
 
-        // Initialisation of the firebase auth object
-        firebaseAuth = FirebaseAuth.getInstance();
 
 //        // Value passed from the previous activity collects here
 //        Intent intent = getIntent();
@@ -103,6 +133,65 @@ public class LogInActivity extends AppCompatActivity {
             }
         });
 // Finish ----------
+
+// TODO oncreate ends here
+    }
+
+    private void loginwithtext() {
+        String email=editTextuserName.getText().toString().trim();
+        String password=editTextpassWord.getText().toString().trim();
+        if (TextUtils.isEmpty(email))
+        {
+            //Email field is empty
+            Toast.makeText(LogInActivity.this, "Please Enter Email address", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        if (TextUtils.isEmpty(password))
+        {
+            //Password Filed is empty
+            Toast.makeText(LogInActivity.this,"Please Enter Password",Toast.LENGTH_SHORT).show();
+            return;
+        }
+        // Here User Filled the form now the data will be sent to the server to check
+        // Due to the server connection we need a progressDialog used to wait for the next step
+
+        // Here we set the logging message in the progress dialog
+        progressDialog.setMessage("Logging in please wait..");
+        // Here we show the progress Dialog message
+        progressDialog.show();
+
+        // Now its time to check the user login data with the server data
+
+        //Here we used this method to send the data of the login email and password filled by the user
+        firebaseAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+
+                if (task.isSuccessful())
+                {
+                    // Login Successfull
+                    Toast.makeText(LogInActivity.this,"Congratulations Login Successfull",Toast.LENGTH_SHORT).show();
+                    // here we stopped the dialog bar roatating screen
+                    progressDialog.dismiss();
+
+                    //This is used to finish the current Activity
+                    finish();
+
+                    //Now we will start Profile Activity as we are in onCompleteListner so we cannot use the Activity name we have to use getApplicationContext
+                    Intent intent= new Intent(getApplicationContext(),MainActivity.class);
+                    startActivity(intent);
+                }
+                else
+                {
+                    //Login Unsuccessfull
+                    Toast.makeText(LogInActivity.this,"Login Unsuccessfull please try again...",Toast.LENGTH_SHORT).show();
+                    // here we stopped the dialog bar roatating screen
+                    progressDialog.dismiss();
+                }
+
+            }
+        });
+
 
 
     }
@@ -155,7 +244,7 @@ public class LogInActivity extends AppCompatActivity {
 
     // This is also part of the Google Sign In API.
     @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
         // Result returned from launching the Intent from GoogleSignInApi.getSignInIntent(...);

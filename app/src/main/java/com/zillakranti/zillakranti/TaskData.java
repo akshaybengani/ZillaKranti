@@ -4,6 +4,8 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -19,7 +21,7 @@ public class TaskData extends AppCompatActivity {
     DatabaseReference databaseReference;
     TextView textViewShowTaskDesc;
     TextView textViewTaskName;
-
+    Button commentme;
     // Here we declared a ProgressDialog variable
     private ProgressDialog progressDialog;
 
@@ -28,6 +30,15 @@ public class TaskData extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_task_data);
         // TODO onCreate Starts here
+
+        commentme = (Button) findViewById(R.id.rateme);
+        commentme.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(TaskData.this,CommentsRatings.class);
+                startActivity(intent);
+            }
+        });
 
         //Here we initialised the progress Dialog
         progressDialog=new ProgressDialog(this);
