@@ -10,9 +10,10 @@ If the upvotes for the particular problems increases to an N percente of populat
 
 ## Working Model
 This app is haveing two interfaces User Interface and Admin interface
-<ul type=bullet">1
-                <li>We have a Sign In Activity in the login by this user can view the progress report of the work done by the Zilla Parishad and other municipal community and evaluate the work done by them. And can provide their review and comments to furthur improvise their work.</li>
-                </ul>
+<ul type=bullet">
+<li>We have a Sign In Activity in the login by this user can view the progress report of the work done by the Zilla Parishad and other municipal community and evaluate the work done by them. And can provide their review and comments to furthur improvise their work.</li>
+<li><b>Administrator</b><brFirst of all we will login this as a administrator in this we can create the task and can check and update the progress report and we can also view the reviews of the users and can improvise the zilla.
+</ul>
 
 ## Installation
 Its a simple and multifunctional Android Application just download and install and everything is ready.
