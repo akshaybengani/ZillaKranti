@@ -1,5 +1,5 @@
 # ZillaKranti
-Beta version of our ZillaKranti Yojna or ZillaVikas Yojna
+Beta version of our ZillaKranti Yojna or ZillaVikas Yojna...
 
 ## Problem we are addressing
 The problem is we need a Zilla Vikas platform where citizens can report problem surrounding them and citizens and government officials can interact easily by a single platform to check the fixation of the problem we can also track about the projects undergoing in the district.
